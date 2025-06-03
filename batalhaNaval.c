@@ -10,32 +10,35 @@ int main() {
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
-    char tabuleiro[11][11] = {
-        {'*', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'},
-        {'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'},
-        {'2', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'},
-        {'3', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'},
-        {'4', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'},
-        {'5', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'},
-        {'6', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'},
-        {'7', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'},
-        {'8', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'},
-        {'9', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'},
-        {'10', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'}
+    int tabuleiro[10][10] = { // MATRIZ DO TABULEIRO
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
     
 
-    char navio[3] = {'3', '3', '3'}; //ARRAY NAVIO
+    int navio[3] = {3, 3, 3,}; //ARRAY NAVIO
 
-        for(int i = 0; i < 11; i++){
-            for(int j = 0; j < 11; j++){
+        printf(" *  A  B  C  D  E  F  G  H  I  J \n"); // COORDENADAS DA LINHA HORIZONTAL
+        
+
+        for(int i = 1; i < 11; i++){ // ESTRUTURA DE REPETIÇÃO PARA A EXIBIÇÃO DE LINHAS (CONTAGEM DE 1 A 10 PARA EXIBIÇAO DAS COORDENADAS DO TABULEIRO)
+            printf("%2d ", i); // COORDENADAS DA LINHA VERTICAL
+            for(int j = 0; j < 10; j++){ // ESTRUTURA DE REPETIÇÃO PARA A EXIBIÇAO DE COLUNAS
                 for(int k = 0; k < 3; k++){
-                    tabuleiro[3][4 + k] = navio[k]; //POSICIONA NAVIO NA HORIZONTAL
+                    tabuleiro[9][3 + k] = navio[k]; //POSICIONA NAVIO NA HORIZONTAL
                     for(int l = 0; l < 3; l++){
                         tabuleiro[5 + l][7] = navio[l]; //POSICIONA NAVIONA VERTICAL
                     }                
                 }
-                printf("%2c ", tabuleiro[i][j]);
+                printf("%2d ", tabuleiro[i - 1][j]); // IMPRESSÃO DO TABULEIRO NO TERMINAL ("[i - 1]" PARA IMPRIMIR A LINHA 10)
             }
             printf("\n");
         }
