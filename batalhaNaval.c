@@ -33,9 +33,15 @@ int main() {
             printf("%2d ", i); // COORDENADAS DA LINHA VERTICAL
             for(int j = 0; j < 10; j++){ // ESTRUTURA DE REPETIÇÃO PARA A EXIBIÇAO DE COLUNAS
                 for(int k = 0; k < 3; k++){
-                    tabuleiro[9][3 + k] = navio[k]; //POSICIONA NAVIO NA HORIZONTAL
+                    tabuleiro[7][2 + k] = navio[k]; //POSICIONA NAVIO NA HORIZONTAL
                     for(int l = 0; l < 3; l++){
-                        tabuleiro[5 + l][7] = navio[l]; //POSICIONA NAVIONA VERTICAL
+                        tabuleiro[3 + l][7] = navio[l]; //POSICIONA NAVIO NA VERTICAL
+                        for(int m = 0; m < 3; m++){
+                            tabuleiro[3 + m][1 + m] = navio[m]; // POSIOCIONA O NAVIO NA DIAGONAL
+                            for(int n = 0; n < 3; n++){
+                                tabuleiro[1 + n][7 - n] = navio[n]; // POSIOCIONA O NAVIO NA DIAGONAL CONTRARIA
+                            }
+                        }
                     }                
                 }
                 printf("%2d ", tabuleiro[i - 1][j]); // IMPRESSÃO DO TABULEIRO NO TERMINAL ("[i - 1]" PARA IMPRIMIR A LINHA 10)
