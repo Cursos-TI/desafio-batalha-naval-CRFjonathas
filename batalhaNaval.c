@@ -20,9 +20,9 @@ int main() {
         printf(" *  A  B  C  D  E  F  G  H  I  J \n"); // COORDENADAS DA LINHA HORIZONTAL
         
 
-        for(int i = 1; i < 11; i++){ // ESTRUTURA DE REPETIÇÃO PARA A EXIBIÇÃO DE LINHAS (CONTAGEM DE 1 A 10 PARA EXIBIÇAO DAS COORDENADAS DO TABULEIRO)
-            printf("%2d ", i); // COORDENADAS DA LINHA VERTICAL
-            for(int j = 0; j < 10; j++){ // ESTRUTURA DE REPETIÇÃO PARA A EXIBIÇAO DE COLUNAS
+        for(int i = 1; i < linha + 1; i++){ // ESTRUTURA DE REPETIÇÃO PARA A EXIBIÇÃO DE LINHAS (CONTAGEM DE 1 A 10 PARA EXIBIÇAO DAS COORDENADAS DO TABULEIRO)   ---->   "linha + 1" = 11, ou seja,seria a mesma coisa que "for(int i = 1; i < 11; i++){"
+            printf("%2d ", i); // COORDENADAS DA LINHA VERTICAL"
+            for(int j = 0; j < coluna; j++){ // ESTRUTURA DE REPETIÇÃO PARA A EXIBIÇAO DE COLUNAS
                 for(int k = 0; k < 3; k++){
                     tabuleiro[7][2 + k] = navio[k]; //POSICIONA NAVIO NA HORIZONTAL
                     for(int l = 0; l < 3; l++){
