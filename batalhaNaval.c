@@ -17,6 +17,11 @@ int main() {
 
     int navio[3] = {3, 3, 3,}; //ARRAY NAVIO
 
+    int cone[3][5];
+    int cruz[3][5];
+    int octeadro[3][5];
+
+
         printf(" *  A  B  C  D  E  F  G  H  I  J \n"); // COORDENADAS DA LINHA HORIZONTAL
         
 
@@ -31,6 +36,41 @@ int main() {
                             tabuleiro[3 + m][1 + m] = navio[m]; // POSIOCIONA O NAVIO NA DIAGONAL
                             for(int n = 0; n < 3; n++){
                                 tabuleiro[1 + n][7 - n] = navio[n]; // POSIOCIONA O NAVIO NA DIAGONAL CONTRARIA
+                                for (int o = 0; o < 3; o++) {         // Linhas: 0 a 2
+                                    for (int p = 0; p < 5; p++) {     // Colunas: 0 a 4
+                                        // Condição: coluna dentro da "largura do cone" para cada linha
+                                        if (p >= 2 - o && p <= 2 + o) {
+                                            cone[o][p] = 5; // Parte do cone (valor afetado)
+                                        } else {
+                                            cone[o][p] = 0; // Fora da área de efeito
+                                        }
+                                        tabuleiro[0 + o][0 + p] = cone[o][p]; // POSIOCIONA A HABILIDADE CONE
+                                        for(int q = 0; q < 3; q++){ // Linhas
+                                            for(int r = 0; r < 5; r++){ // Colunas
+                                                // Losango com centro em [1][2]
+                                                if((q == 0 || q == 2) && r == 2){
+                                                    octeadro[q][r] = 5;
+                                                } else if (q == 1 && (r >= 1 && r <= 3)){
+                                                    octeadro[q][r] = 5;
+                                                } else{
+                                                    octeadro[q][r] = 0;
+                                                }
+                                                tabuleiro[2 + q][5+ r] = octeadro[q][r]; // POSIOCIONA A HABILIDADE OCTEADRO
+                                                for(int s = 0; s < 3; s++){ // Linhas
+                                                    for(int t = 0; t < 5; t++){ // Colunas
+                                                        // Ponto central (linha 1) ou coluna do meio (coluna 2)
+                                                        if(s == 1 || t == 2){
+                                                            cruz[s][t] = 5; // Parte da cruz (afetada)
+                                                        } else {
+                                                            cruz[s][t] = 0; // Fora da área de efeito
+                                                        }
+                                                        tabuleiro[6 + s][2 + t] = cruz[s][t]; // POSIOCIONA A HABILIDADE CRUZ
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }  
                             }
                         }
                     }                
